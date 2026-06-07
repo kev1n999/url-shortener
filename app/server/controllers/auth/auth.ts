@@ -15,4 +15,19 @@ export class AuthController {
       })
     }
   }
+
+  public login = async (req: Request, res: Response) => {
+    const data = req.body;
+
+    try {
+      const result = await this.authService.userLogin(data);
+      return res.status(201).json({
+        "token": result,
+      });
+    } catch (err: any) {
+      return res.status(505).json({
+        "message": err.message,
+      });
+    }
+  }
 }

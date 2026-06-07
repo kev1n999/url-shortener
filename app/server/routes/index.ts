@@ -7,3 +7,4 @@ const authController = new AuthController();
 
 router.get('/', (req, res) => res.status(200).send('Hello World!'));
 router.post('/auth/signup', authController.register);
+router.post('/auth/signin', authController.login);
