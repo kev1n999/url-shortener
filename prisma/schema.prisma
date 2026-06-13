@@ -15,3 +15,10 @@ model User {
   createdat DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
+
+model Shortener {
+  id Int @id @default(autoincrement())
+  shortCode String @unique 
+  originalurl String 
+  createdAt DateTime @default(now())
+}
