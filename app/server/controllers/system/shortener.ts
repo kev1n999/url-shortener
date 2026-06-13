@@ -9,6 +9,6 @@ export class ShortenerController {
 
     const shorted = await this.service.create({ originalUrl });
 
-    return res.status(201).json({ "shorted": shorted });
+    return res.status(201).json({ shorted: shorted });
   };
 }
