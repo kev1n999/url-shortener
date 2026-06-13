@@ -1,7 +1,7 @@
 import { ShortenerRepository } from '@/database/repositories/shortener.repositorie';
 import { CreateShortenerDTO } from '@/dto/system/create-shortener-dto';
+import { Shortener } from 'generated/prisma/client';
 import { nanoid } from 'nanoid';
-import { Shortener } from '@/models/shortener.model';
 
 export class ShortenerService {
   public constructor(private shortenerRepository = new ShortenerRepository()) {}
@@ -14,5 +14,9 @@ export class ShortenerService {
       shortCode
     );
     return shortener;
+  }
+
+  public async findByCode(shortCode: string): Promise<Shortener | null> {
+    return this.shortenerRepository.findByCode(shortCode);
   }
 }

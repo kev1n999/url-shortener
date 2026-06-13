@@ -11,6 +11,6 @@ app.use('/api', router);
 
 export async function bootstrap() {
   app.listen(port, () => {
-    console.log(`Listening on: http://localhost:${port}`);
+    console.log(`Listening on: ${env.baseUrl(env.serverPort)}`);
   });
 }

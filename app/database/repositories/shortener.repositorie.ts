@@ -1,6 +1,6 @@
 import { CreateShortenerDTO } from '@/dto/system/create-shortener-dto';
 import { prisma } from '..';
-import { Shortener } from '@/models/shortener.model';
+import { Shortener } from 'generated/prisma/client';
 
 export class ShortenerRepository {
   public async createShortener(
@@ -15,5 +15,11 @@ export class ShortenerRepository {
     });
 
     return shortener;
+  }
+
+  public async findByCode(shortCode: string) {
+    return await prisma.shortener.findUnique({
+      where: { shortCode: shortCode },
+    });
   }
 }
