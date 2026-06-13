@@ -7,7 +7,6 @@ export const router = Router();
 const authController = new AuthController();
 const shortenerController = new ShortenerController();
 
-router.get('/', (req, res) => res.status(200).send('Hello World!'));
 router.get('/:shortCode', shortenerController.redirect);
 router.post('/shortener/create', shortenerController.create);
 router.post('/auth/signup', authController.register);
