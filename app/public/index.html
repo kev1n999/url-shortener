@@ -244,6 +244,10 @@
           message.textContent = isRegister
             ? 'Conta criada com sucesso.'
             : 'Login realizado com sucesso.';
+
+          if (message.textContent.trim().includes("Login")) {
+            open("/shortener/create");
+          }
         } catch (err) {
           message.textContent = err.message;
         } finally {
