@@ -1,20 +1,21 @@
-const url = document.getElementById("url");
-const shortenerBtn = document.getElementById("shortener-btn");
-const result = document.getElementById("result");
-const redirectBtn = document.getElementById("redirect-btn");
+const url = document.getElementById('url');
+const shortenerBtn = document.getElementById('shortener-btn');
+const result = document.getElementById('result');
+const redirectBtn = document.getElementById('redirect-btn');
 
-let shortUrl = "";
+let shortUrl = '';
 
-shortenerBtn.addEventListener("click", () => {
-  result.textContent = "Encurtando URL...";
+shortenerBtn.addEventListener('click', () => {
+  result.textContent = 'Encurtando URL...';
   redirectBtn.disabled = true;
-  shortUrl = "";
+  shortUrl = '';
 
-  fetch("/api/shortener/create", {
-    method: "POST",
+  fetch('/api/shortener/create', {
+    method: 'POST',
     headers: {
-      "Content-Type": "application/json",
+      'Content-Type': 'application/json',
     },
+    credentials: 'same-origin',
     body: JSON.stringify({
       originalUrl: url.value,
     }),
@@ -30,7 +31,7 @@ shortenerBtn.addEventListener("click", () => {
     });
 });
 
-redirectBtn.addEventListener("click", () => {
+redirectBtn.addEventListener('click', () => {
   if (!shortUrl) {
     return;
   }

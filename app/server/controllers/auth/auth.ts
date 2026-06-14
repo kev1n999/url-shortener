@@ -20,9 +20,18 @@ export class AuthController {
     const data = req.body;
 
     try {
-      const result = await this.authService.userLogin(data);
+      const token = await this.authService.userLogin(data);
+
+      res.cookie('token', token, {
+        httpOnly: true,
+        sameSite: 'lax',
+        secure: process.env.NODE_ENV === 'production',
+        maxAge: 7 * 24 * 60 * 60 * 1000,
+        path: '/',
+      });
+
       return res.status(201).json({
-        token: result,
+        message: 'LOGIN_SUCCESS',
       });
     } catch (err: any) {
       return res.status(505).json({
